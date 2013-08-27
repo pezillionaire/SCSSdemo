@@ -1,0 +1,336 @@
+// ---- DEMO Stuff ----- //
+
+// --- button @extend demo --- //
+
+.button {
+	background: $maincolor;
+	border-radius: 5px;
+	box-shadow: 0 2px 0 $darkcolour;
+	padding: $spacing-half $spacing;
+	color: white;
+	text-decoration: none;
+	font-family: $font-family-sans;
+	&:hover {
+		background: $darkcolour;
+		box-shadow: 0 2px 0 $black;
+	}
+}
+
+// .more a { @extend .button; }
+
+// --- button @mixin demo --- //
+
+@mixin mybutton($mycolor) {
+	background: $mycolor;
+	border-radius: 5px;
+	box-shadow: 0 2px 0 shade($mycolor, 80%);
+	padding: $spacing-half $spacing;
+	color: white;
+	text-decoration: none;
+ font-family: $font-family-sans;
+	&:hover {
+		background: shade($mycolor, 40%);
+		box-shadow: 0 2px 0 $black;
+	}
+}
+
+.more a { @include mybutton($maincolor); }
+
+
+
+
+/* ----- WP Stuff ----- */
+
+.alignleft { position: relative; float: left; text-align: left; margin: 0 $spacing-x2 $spacing-x2 0; }
+.alignright { position: relative; float: right; text-align: right; margin: 0 0 $spacing-x2 $spacing-x2; }				
+.aligncenter { clear: both; margin-right: auto; margin-left: auto; text-align: center; }
+
+.wp-caption-text {
+	font-size: $small-print-size;
+	font-family: $font-family-sans;
+	color: $darkgrey;
+}
+
+/* ----- structure ----- */
+
+html, body  { height: 100%; }
+
+body {
+	font: $font-weight #{$font-size}%/#{$line-height} $font-family;
+	color: $grey;
+}
+	
+header {
+	margin: 0 auto;
+	max-width: 40em;
+	text-align: left;
+	padding: $spacing $spacing-x2;
+	border-bottom: 2px solid $offwhite;
+	font-family: $font-family-sans;
+	color: #999;
+	@include clearfix;
+}
+
+section {
+	margin: $spacing-x6 auto 0 auto;
+	max-width: 40em;
+	text-align: left;
+	padding: 0 $spacing-x2;
+}
+
+article { margin-bottom: $spacing-x6; }
+
+/* footer */
+
+footer {
+	padding: 0 $spacing-x2 $spacing-x2;
+	background: $offwhite;
+	border-top: 4px solid $maincolor;
+	color: $darkgrey;
+	section {
+		margin: 0;
+		padding: $spacing 0 $spacing-x2;
+		border-bottom: 2px solid $litegrey;
+	}
+}
+
+#container {
+	position: relative;
+	min-height: 100%;
+	overflow: hidden;
+	width: 100%;
+}
+
+#navwrap { 
+	position: absolute;
+	top: 0;
+	right: -13.1em;
+	overflow: hidden;
+	z-index: 999999; 
+	width: 13em;	
+	background-color: #222;
+	color: #fff;
+	min-height: 100%;
+	padding: $spacing-x2 0 0;
+	font-family: $font-family-sans;
+	box-shadow: 0 0 4px (hsla(0, 0, 0, 0.7));
+	@include transition (right .25s ease-in);
+  &.sidebar {
+  	right: 0px;
+  	@include transition (right .25s ease-out);
+  }
+}
+
+#page {
+	position: relative;
+	min-height: 100%;
+	margin-right: 0px;
+	overflow: hidden;
+	border-top: 4px solid $maincolor;
+  @include transition (margin-right .20s ease-out);
+}
+
+/* ----- site wide navigation ----- */
+
+.title {
+	display: block;
+	float: left;
+}
+
+.logo {
+	display: block;
+	width: 150px;
+	height: 52px;
+}
+
+.description {
+	display:block;
+	text-align: center;
+	font-size: $small-print-size;
+}
+
+.toggle {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: $small-print-size;
+	text-transform: uppercase;
+	text-decoration: none;
+	display: block;
+	padding: $spacing-x2 $spacing;
+}
+
+/* sidebar nav */
+
+#navwrap {
+	text-align: left;
+	line-height: 1;
+	h4 {
+		color: #fff;
+		padding: 0 $spacing-plus-half $spacing;
+		margin: 0;
+	}
+	a { text-decoration: none; }
+	ul {
+		display: block;
+		margin: 0;
+		padding: 0 $spacing-plus-half $spacing-x2;
+	}
+
+	li a {
+		display: block;
+		padding: $spacing-half 0;
+	}
+}
+
+#postnav { margin-top: $spacing-x2; }
+
+/* ----- custom typography ------ */
+
+h1 a, h2 a, {
+	color: $black;
+	&:hover{ color: $darkgrey; }
+}
+
+h3#comments { margin-top: $spacing-x6; }
+
+h4.cat-title { color: $grey; }
+
+::-moz-selection, ::selection {
+	background: $maincolor;
+	color: #fff;
+	text-shadow: none;
+}
+
+a {
+	color: $maincolor;
+	@include transition ( color .6s ease);
+	&:hover { color: $darkcolour; }
+}
+
+img {
+	max-width: 100% !important;
+	height: auto;
+}
+
+section img {
+	margin-bottom: $spacing-x3;
+	border-radius: $spacing-half;
+}
+
+blockquote {
+	margin: 0 0 $spacing-x3 0;
+	padding: 0 $spacing-x3;
+	border-left: 2px solid $maincolor;
+}
+
+cite { font-style: normal; }
+
+pre {
+	color: #fff;
+	background: $black;
+	border-radius: $spacing-half;
+}
+
+hr {
+	border-top: 2px solid $litegrey;
+	height: 2px;
+	margin-bottom: $spacing-x3;
+}
+
+/* footer */
+
+footer {
+	h4 {
+		margin: 0;
+		padding: $spacing 0;
+		color: $grey;
+		text-transform: uppercase;
+	}
+	ul { font-family: $font-family-sans; }
+	a {
+		text-decoration: none;
+		&:hover { color: $litegrey; }
+	}
+	p { color: $grey; }
+}
+
+/* article */
+
+article {
+	ul, ol { margin: auto auto $indent-val; }
+	p ul, p ol { margin: auto; }
+	ul li { list-style: circle inside; }
+	ol li { list-style: decimal inside; }
+	p img { margin: 0; }
+	blockquote p {
+		padding: 0;
+		font-style: italic;
+	}
+	.searchterm {
+		padding: 0 $spacing-half $spacing-half $spacing-half;
+		border-radius: $spacing-half;
+		background: tint($maincolor, 80);
+	}
+}
+
+.wp-caption img { margin-bottom: $spacing-half; }
+.thumb img {
+	float: right;
+	margin: 0 0 $spacing $spacing;
+	border-radius: 50px;
+	width: 50px;
+	@include transition (all .25s ease);
+}
+
+.post-edit-link {
+	color: $litegrey;
+	font-weight: 400;
+	text-decoration: none;
+}
+
+
+/* ----- forms ----- */
+
+form { }
+	#navwrap {
+		form {
+			margin: $spacing-x2 $spacing-plus-half 0 $spacing-plus-half;
+			padding: $spacing;
+			border-radius: $spacing-half;
+			background: #333;
+		}
+		input {
+			background: transparent;
+			color: #fff; 
+			font-size: $small-print-size;
+		}
+	}
+
+/* ----- media queries ----- */
+
+@media screen and (min-width: 55em) {
+	#navwrap { 
+		right: 0;
+		padding: $spacing-x4 0 0;
+		box-shadow: none;
+	}
+
+	#page { margin-right: 13em; }
+	.x, .toggle {display: none; }
+
+	header { padding: $spacing-x6 $spacing-x4 $spacing-x2; }
+	section { padding: 0 $spacing-x4; }
+	article {
+		ul li { list-style: circle outside; }
+		ol li { list-style: decimal outside; }
+	}
+
+	.description { font-size: 100%; }
+	footer { padding: 0 $spacing-x4 $spacing-x2;}
+	.thumb img {
+		margin: 0 0 $spacing-x3 $spacing-x3;
+		border-radius: 100px;
+		width: 100px;
+	}
+}

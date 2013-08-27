@@ -1,0 +1,19 @@
+/*
+Theme Name: SCSS Demo Theme
+Theme URI: 
+Version: 0.1
+Description: Demo for WordCamp
+Author: Andrew 'Pez' Pengelly
+Author URI: pezillionaire.com
+
+License: GNU General Public License
+*/
+
+@import "css/normalize.css";
+@import "css/typeplate.css";
+@import "css/main.css";
+
+/* ----- NOTE ----- */
+/* This file will bw over written by the compiled SCSS.
+In order to ensure it works with WP the Style.scss file
+must also include the wordpress style header above. */
